@@ -5,7 +5,18 @@
 	 Data is not accessed directly, in fact, they are accessed through functions(GET or SET) written inside the class. Attributes are kept private but getter(GET) and setter(SET) methods are kept public for manipulation of these attributes.
 */
 
+class Fruit {
+  public $name;
+  protected $color;
+  private $weight;
+}
 
+$mango = new Fruit();
+echo $mango->name = 'Mango'; // OK
+echo $mango->color = 'Yellow'; // ERROR
+echo $mango->weight = '300'; // ERROR
+
+//////////////////////////////////
 class Class1{
 	protected $num;
 	function __construct(){
