@@ -13,6 +13,8 @@
 			<li><a href="constructorDestructor.php">Constructor</a></li>
 			<li><a href="inheritance.php">Inheritance</a></li>
 			<li><a href="encapsulation.php">Encapsulation</a></li>
+			<li><a href="abstract.php">Abstract</a></li>
+
 		</ul>
 	</nav>
 </body>
