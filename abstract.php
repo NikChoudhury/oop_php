@@ -30,6 +30,7 @@ $obj2->fun1();
 
 ////////////////////////////////
 
+
 abstract class Bank{
 	abstract function id_proof();
 }
@@ -37,7 +38,7 @@ abstract class Bank{
 class HDFC extends Bank
 {
 	function id_proof(){
-		echo "Test";
+		echo "Jon";
 	}
 }
 
@@ -48,6 +49,7 @@ class ICICI extends Bank
 	}
 }
 
+// Every Bank Need Id Proof 
 
 
 
