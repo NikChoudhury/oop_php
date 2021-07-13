@@ -15,7 +15,8 @@
 			<li><a href="encapsulation.php">Encapsulation</a></li>
 			<li><a href="abstract.php">Abstract</a></li>
 			<li><a href="interfaces.php">Interfaces</a></li>
-			<li><a href="static_methods.php">Static Methods</a></li>		
+			<li><a href="static_methods.php">Static Methods</a></li>
+			<li><a href="traits.php">Traits</a></li>	
 		</ul>
 	</nav>
 </body>
