@@ -14,7 +14,7 @@
 			<li><a href="inheritance.php">Inheritance</a></li>
 			<li><a href="encapsulation.php">Encapsulation</a></li>
 			<li><a href="abstract.php">Abstract</a></li>
-
+			<li><a href="interfaces.php">Interfaces</a></li>
 		</ul>
 	</nav>
 </body>
