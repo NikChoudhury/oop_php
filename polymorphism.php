@@ -67,7 +67,7 @@ echo $mycirc->calcTask();
 echo $myrect->calcTask();
 
 
-// Same Function behaive Different
+// Same Function behaive Different In Polymorphism
 
 
 

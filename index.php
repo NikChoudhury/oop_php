@@ -17,7 +17,8 @@
 			<li><a href="interfaces.php">Interfaces</a></li>
 			<li><a href="static_methods.php">Static Methods</a></li>
 			<li><a href="traits.php">Traits</a></li>
-			<li><a href="polymorphism.php">Polymorphism</a></li>	
+			<li><a href="polymorphism.php">Polymorphism</a></li>
+			<li><a href="namespace.php">Namespaces</a></li>		
 		</ul>
 	</nav>
 </body>
