@@ -26,7 +26,7 @@
 				<table class="table table-striped table-bordered table-responsive-sm">
 				   <thead>
 				      <tr class="bg-primary text-white">
-				         <th>Sr#</th>
+				         <th>Sl#</th>
 				         <th>Name</th>
 				         <th>Email</th>
 				         <th>Mobile</th>
