@@ -85,7 +85,8 @@ class Query extends Database
 			$values = "'".$values."'";
 			$sql = "INSERT INTO `$table`($field) VALUES ($values) ";
 			// die($sql);
-			$result = $this->connect()->Query($sql);		
+			$result= mysqli_query($this->connect(),$sql);
+			return $result;		
 		}
 		
 	}
@@ -138,6 +139,7 @@ class Query extends Database
 		
 	}
 
+// Safe Value
 	public function get_safe_str($str){
 		if ($str!='') {
 			return mysqli_real_escape_string($this->connect(),$str);

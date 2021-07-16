@@ -70,7 +70,7 @@ $result = $obj->getData('users','*','','id','desc','');
 				         <th>Name</th>
 				         <th>Email</th>
 				         <th>Mobile</th>
-				         <th class="text-center">Added On</th>
+				        
 				         <th class="text-center">Action</th>
 				      </tr>
 				   </thead>
@@ -79,14 +79,14 @@ $result = $obj->getData('users','*','','id','desc','');
 				   		$sl=1;
 				   		foreach ($result as $list) {
 				   	?>
-				      <tr id="row_<?php echo  $list['id']?>">
+				      <tr id="row_<?php echo $list['id']?>">
 				         <td><?php echo $sl?></td>
 				         <td><?php echo $list['name']?></td>
 				         <td><?php echo $list['email']?></td>
 				         <td><?php echo $list['mobile']?></td>
-				         <td align="center">14th July 2021</td>
+				         
 				         <td align="center" >
-				            <a href="" class="text-primary"><i class="fa fa-fw fa-edit"></i> <span class="d-none d-lg-inline">Edit</span></a> | 
+				            <a href="manage-users.php?id=<?php echo $list['id']?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> <span class="d-none d-lg-inline">Edit</span></a> | 
 				            <a href="javascript:void(0)" id="aid_<?php echo $list['id']?>" class="text-danger" onclick="deleteRow(<?php echo $list["id"]?>)" disabled><i class="fa fa-fw fa-trash"></i> <span class="d-none d-lg-inline">Delete</span></a>
 				         </td>
 				      </tr>
@@ -135,7 +135,7 @@ $result = $obj->getData('users','*','','id','desc','');
 					var message = JSON.parse(response);
 				      // alert(message) 
 				      // console.log(response)  
-				       // document.location.reload(true);
+				       document.location.reload(true);
 				}
 			});
 			
