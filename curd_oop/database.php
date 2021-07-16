@@ -146,6 +146,12 @@ class Query extends Database
 		}
 	}
 
+// //Add to Trash Bin
+// 	public function insertTash($table,$condition_arr=''){
+		
+// 	}
+
+
 }
 
 

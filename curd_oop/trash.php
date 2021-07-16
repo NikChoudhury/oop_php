@@ -3,7 +3,7 @@ include 'database.php';
 $obj = new Query;
 // $condition_arr = array('name'=>'sssNik');
 // $result = $obj->getData('users','*',$condition_arr,'id','desc','');
-$result = $obj->getData('users','*','','id','desc','');
+$result = $obj->getData('trash','*','','trash_id','desc','');
 // print_r($result);
 
 
@@ -54,9 +54,8 @@ $result = $obj->getData('users','*','','id','desc','');
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<strong>Browse Users</strong>
-				<a href="trash.php" class="float-right ml-2 mr-2 btn btn-primary btn-sm"><i class="fa fa-fw fa-trash"></i> Trash Bin</a>
-				<a href="manage-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Add Users</a>
+				<strong>Trash</strong>
+				<a href="index.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Browse Users</a>
 			</div>
 
 			<div class="card-body">
@@ -80,15 +79,16 @@ $result = $obj->getData('users','*','','id','desc','');
 				   		$sl=1;
 				   		foreach ($result as $list) {
 				   	?>
-				      <tr id="row_<?php echo $list['id']?>">
+				      <tr id="row_<?php echo $list['trash_id']?>">
 				         <td><?php echo $sl?></td>
 				         <td><?php echo $list['name']?></td>
 				         <td><?php echo $list['email']?></td>
 				         <td><?php echo $list['mobile']?></td>
 				         
 				         <td align="center" >
-				            <a href="manage-users.php?id=<?php echo $list['id']?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> <span class="d-none d-lg-inline">Edit</span></a> | 
-				            <a href="javascript:void(0)" id="aid_<?php echo $list['id']?>" class="text-danger" onclick="deleteRow(<?php echo $list["id"]?>)" disabled><i class="fa fa-fw fa-trash"></i> <span class="d-none d-lg-inline">Delete</span></a>
+				         	<a href="javascript:void(0)" id="tid_<?php echo $list['trash_id']?>" class="text-success" onclick="restoreRow(<?php echo $list["trash_id"]?>)" ><i class="fa fa-fw fa-undo"></i> <span class="d-none d-lg-inline">Restore</span></a>
+				             | 
+				            <a href="javascript:void(0)" id="aid_<?php echo $list['trash_id']?>" class="text-danger" onclick="deleteRow(<?php echo $list["trash_id"]?>)" ><i class="fa fa-fw fa-trash"></i> <span class="d-none d-lg-inline">Delete</span></a>
 				         </td>
 				      </tr>
 
@@ -131,7 +131,28 @@ $result = $obj->getData('users','*','','id','desc','');
 			$.ajax({
 				url: 'delete.php',
 				type: 'post',
-				data: {type: 'trash',id: id},
+				data: {type: 'delete',id: id},
+				success:function(response,status){
+					var message = JSON.parse(response);
+				      // alert(message) 
+				      // console.log(response)  
+				       document.location.reload(true);
+				}
+			});
+			
+			
+		}
+
+		function restoreRow(id){
+			 $("#aid_"+id).html('Wait..');
+			  $("#row_"+id).hide(1000,function () {
+            $(this).remove();
+        });
+	
+			$.ajax({
+				url: 'delete.php',
+				type: 'post',
+				data: {type: 'restore',id: id},
 				success:function(response,status){
 					var message = JSON.parse(response);
 				      // alert(message) 
