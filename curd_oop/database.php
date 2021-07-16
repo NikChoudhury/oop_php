@@ -1,5 +1,4 @@
 <?php
-
 class Database{
 	private $host;
 	private $username;
@@ -22,7 +21,7 @@ class Database{
 
 class Query extends Database
 {
-	public function getData($table,$field='*',$condition_arr='',$order_by_filed='',$order_by_type='asc',$limit=''){
+	public function getData($table,$field='*',$condition_arr='',$order_by_filed='',$order_by_type='desc',$limit=''){
 
 		$sql = "SELECT $field FROM $table";
 
@@ -53,7 +52,7 @@ class Query extends Database
 		}
 
 		// die($sql);
-		
+
 		/*$sql = "SELECT $field FROM $table WHERE $condition ORDER BY $order_by_filed $order_by_type LIMIT $limit";
 		die($sql);*/
 
@@ -64,11 +63,90 @@ class Query extends Database
 				$arr[]= $row;
 			}
 			return $arr;
+
 		}else{
 			return 0;
 		}
-	} 
+	}
+
+
+/*Funtion For Insert Data*/
+	
+	public function insertData($table,$condition_arr=''){
+
+		if ($condition_arr!='') {
+			foreach ($condition_arr as $key => $val) {
+				$field_arr[]=$key;
+				$value_arr[]=$val;	
+
+			}
+			$field = implode(",", $field_arr);
+			$values = implode("','", $value_arr);
+			$values = "'".$values."'";
+			$sql = "INSERT INTO `$table`($field) VALUES ($values) ";
+			// die($sql);
+			$result = $this->connect()->Query($sql);		
+		}
+		
+	}
+
+/* Function For Delete Data*/
+
+	public function deleteData($table,$condition_arr=''){
+		$sql = "DELETE FROM `$table` WHERE ";
+
+		if ($condition_arr!='') {
+			$c = count($condition_arr);
+			$i= 1;
+			foreach ($condition_arr as $key => $val) {
+				if ($i==$c) {
+					$sql.= "$key='$val' ";
+				}else{
+					$sql.= "$key='$val' and ";
+				}
+				$i++;
+			}
+
+			// die($sql);
+			// $result = $this->connect()->Query($sql);
+			$result= mysqli_query($this->connect(),$sql);
+			return $result;
+			
+			  		
+		}
+		
+	}
+
+// Function For Update Data
+	public function updateData($table,$condition_arr='',$where_field,$where_value){
+		if ($condition_arr!='') {
+			$sql = "UPDATE `$table` SET ";
+			$c = count($condition_arr);
+			$i= 1;
+			foreach ($condition_arr as $key => $val) {
+				if ($i==$c) {
+					$sql.= "$key='$val' ";
+				}else{
+					$sql.= "$key='$val' , ";
+				}
+				$i++;
+			}
+			$sql.= " WHERE $where_field = $where_value";
+			// die($sql);
+			$result = $this->connect()->Query($sql);		
+		}
+		
+	}
+
+	public function get_safe_str($str){
+		if ($str!='') {
+			return mysqli_real_escape_string($this->connect(),$str);
+		}
+	}
+
 }
+
+
 
 /*
  "SELECT * FROM users WHERE name='Nik' and id= 2 ORDER BY name DESC LIMIT 2"

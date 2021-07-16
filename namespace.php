@@ -22,7 +22,7 @@ $obj1->abcfun();
 //////////
 
 use Test2 as T2;	//Give a namespace an alias.
-$obj2 = new T2\Abc;
-$obj2->abcfun();
+$obj2 = new T2\Xyz;
+$obj2->xyzfun();
 
 ?>
