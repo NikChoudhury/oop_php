@@ -22,10 +22,7 @@ class Database{
 class Query extends Database
 {
 	public function getData($table,$field='*',$condition_arr='',$order_by_filed='',$order_by_type='desc',$limit=''){
-
 		$sql = "SELECT $field FROM $table";
-
-		
 		if ($condition_arr!='') {
 			$sql.= ' WHERE ';
 			$c = count($condition_arr);
@@ -38,9 +35,6 @@ class Query extends Database
 				}
 				$i++;
 			}
-			// print_r($condition_arr);
-			// die();
-			
 		}
 
 		if ($order_by_filed!='') {
