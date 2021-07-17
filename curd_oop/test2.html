@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Select one or more checkboxes and click the button!</p>
+
+    <div id="birds">
+        <input type="checkbox" id="brd1" value="Mourning Dove" class="checkbox" />
+        <label for="brd1">Mourning Dove</label>
+        <br />
+        <input type="checkbox" id="brd2" value="Rock Pigeon" class="checkbox"/>
+        <label for="brd2">Rock Pigeon</label>
+        <br />
+        <input type="checkbox" id="brd3" value="Black Vulture" class="checkbox"/>
+        <label for="brd3">Black Vulture</label>
+    </div>
+    <p>
+        <input type="button" id="check"  value="Click it" style="display: none;" />
+    </p>
+</body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.caret/0.1/jquery.caret.js"></script>
+
+<script>
+
+
+
+    
+    $("input[type='checkbox']").click(function() {
+        var atLeastOneChecked = false;
+        $("input[type='checkbox']").each(function(index) {
+          if ($(this).prop('checked'))
+            atLeastOneChecked = true;
+        });
+        if (atLeastOneChecked) {
+          $("#check").show(); //built-in jquery function
+          //...or...
+          $("#check").css('display','inline-block'); //or set style explicitly
+        } else {
+          $("#check").hide(); //built-in jquery function
+          //...or...
+          $("#check").css('display','none'); //set style explicitly
+        }
+    });
+</script>
+</html>
